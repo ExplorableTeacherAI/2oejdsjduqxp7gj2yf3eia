@@ -202,13 +202,13 @@ export const variableDefinitions: Record<string, VariableDefinition> = {
     // Section 1 question - what do we call parts of a whole
     answerWhatIsFraction: {
         defaultValue: '',
-        type: 'text',
+        type: 'select',
         label: 'What is a fraction answer',
         description: 'Student answer for what we call parts of a whole',
         placeholder: '???',
         correctAnswer: 'fraction',
+        options: ['number', 'fraction', 'decimal', 'percent'],
         color: '#8E90F5',
-        caseSensitive: false,
     },
 
     // Section 2 question - identify fraction from visual

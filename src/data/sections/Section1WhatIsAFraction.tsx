@@ -13,7 +13,7 @@ import {
     EditableH2,
     EditableParagraph,
     InlineScrubbleNumber,
-    InlineClozeInput,
+    InlineClozeChoice,
     InlineFeedback,
     InlineTooltip,
 } from "@/components/atoms";
@@ -21,7 +21,7 @@ import { InteractionHintSequence } from "@/components/atoms/visual/InteractionHi
 import {
     getVariableInfo,
     numberPropsFromDefinition,
-    clozePropsFromDefinition,
+    choicePropsFromDefinition,
 } from "../variables";
 import { useVar } from "@/stores";
 
@@ -252,14 +252,15 @@ export const section1Blocks: ReactElement[] = [
                     position="terminal"
                     successMessage="— well done! Fractions help us describe parts of things"
                     failureMessage="— not quite."
-                    hint="It starts with 'fr' and rhymes with 'action'"
+                    hint="Think about the special name for parts of a whole"
                     reviewBlockId="section1-intro"
                     reviewLabel="Review the introduction"
                 >
-                    <InlineClozeInput
+                    <InlineClozeChoice
                         varName="answerWhatIsFraction"
                         correctAnswer="fraction"
-                        {...clozePropsFromDefinition(
+                        options={["number", "fraction", "decimal", "percent"]}
+                        {...choicePropsFromDefinition(
                             getVariableInfo("answerWhatIsFraction")
                         )}
                     />
