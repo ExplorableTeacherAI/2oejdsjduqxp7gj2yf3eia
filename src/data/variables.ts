@@ -1,12 +1,12 @@
 /**
  * Variables Configuration
  * =======================
- * 
+ *
  * CENTRAL PLACE TO DEFINE ALL SHARED VARIABLES
- * 
+ *
  * This file defines all variables that can be shared across sections.
  * AI agents should read this file to understand what variables are available.
- * 
+ *
  * USAGE:
  * 1. Define variables here with their default values and metadata
  * 2. Use them in any section with: const x = useVar('variableName', defaultValue)
@@ -53,108 +53,252 @@ export interface VariableDefinition {
 
 /**
  * =====================================================
- * 🎯 DEFINE YOUR VARIABLES HERE
+ * 🎯 FRACTIONS LESSON VARIABLES
  * =====================================================
- * 
- * SUPPORTED TYPES:
- * 
- * 1. NUMBER (slider):
- *    { defaultValue: 5, type: 'number', min: 0, max: 10, step: 1 }
- * 
- * 2. TEXT (free text):
- *    { defaultValue: 'Hello', type: 'text', placeholder: 'Enter text...' }
- * 
- * 3. SELECT (dropdown):
- *    { defaultValue: 'sine', type: 'select', options: ['sine', 'cosine', 'tangent'] }
- * 
- * 4. BOOLEAN (toggle):
- *    { defaultValue: true, type: 'boolean' }
- * 
- * 5. ARRAY (list of numbers):
- *    { defaultValue: [1, 2, 3], type: 'array' }
- * 
- * 6. OBJECT (complex data):
- *    { defaultValue: { x: 5, y: 10 }, type: 'object', schema: '{ x: number, y: number }' }
  */
 export const variableDefinitions: Record<string, VariableDefinition> = {
     // ========================================
-    // ADD YOUR VARIABLES HERE
+    // SECTION 1: WHAT IS A FRACTION
     // ========================================
 
-    // Uncomment and modify these examples for your lesson:
-
-    /*
-    // ─────────────────────────────────────────
-    // NUMBER - Use with sliders
-    // ─────────────────────────────────────────
-    myValue: {
-        defaultValue: 5,
+    // Pizza slices - total number of slices
+    pizzaTotalSlices: {
+        defaultValue: 4,
         type: 'number',
-        label: 'My Value',
-        description: 'A number that controls something',
-        unit: 'm',           // optional unit display
+        label: 'Total Pizza Slices',
+        description: 'Number of equal slices the pizza is divided into',
+        min: 2,
+        max: 8,
+        step: 1,
+        color: '#62D0AD',
+    },
+
+    // Pizza slices - shaded slices (eaten/taken)
+    pizzaShadedSlices: {
+        defaultValue: 1,
+        type: 'number',
+        label: 'Shaded Slices',
+        description: 'Number of slices that are shaded/taken',
         min: 0,
-        max: 10,
-        step: 0.5,
+        max: 8,
+        step: 1,
+        color: '#F7B23B',
     },
 
-    // ─────────────────────────────────────────
-    // TEXT - Free text input
-    // ─────────────────────────────────────────
-    lessonTitle: {
-        defaultValue: 'My Lesson',
-        type: 'text',
-        label: 'Lesson Title',
-        description: 'The title of your lesson',
-        placeholder: 'Enter a title...',
+    // ========================================
+    // SECTION 2: PARTS OF A WHOLE
+    // ========================================
+
+    // Shape divider - number of parts
+    shapeParts: {
+        defaultValue: 4,
+        type: 'number',
+        label: 'Number of Parts',
+        description: 'Number of equal parts to divide the shape into',
+        min: 2,
+        max: 8,
+        step: 1,
+        color: '#8E90F5',
     },
 
-    // ─────────────────────────────────────────
-    // SELECT - Dropdown with options
-    // ─────────────────────────────────────────
-    difficulty: {
-        defaultValue: 'medium',
+    // Shape divider - shaded parts
+    shapeShadedParts: {
+        defaultValue: 1,
+        type: 'number',
+        label: 'Shaded Parts',
+        description: 'Number of parts that are shaded',
+        min: 0,
+        max: 8,
+        step: 1,
+        color: '#AC8BF9',
+    },
+
+    // Shape type selector
+    shapeType: {
+        defaultValue: 'circle',
         type: 'select',
-        label: 'Difficulty',
-        description: 'The difficulty level of the lesson',
-        options: ['easy', 'medium', 'hard', 'expert'],
+        label: 'Shape Type',
+        description: 'The shape to divide into parts',
+        options: ['circle', 'rectangle'],
+        color: '#62CCF9',
     },
 
-    // ─────────────────────────────────────────
-    // BOOLEAN - Toggle switch
-    // ─────────────────────────────────────────
-    showHints: {
-        defaultValue: true,
-        type: 'boolean',
-        label: 'Show Hints',
-        description: 'Toggle to show or hide hints',
+    // ========================================
+    // SECTION 3: NUMERATOR AND DENOMINATOR
+    // ========================================
+
+    // Understanding numerator
+    numeratorValue: {
+        defaultValue: 3,
+        type: 'number',
+        label: 'Numerator',
+        description: 'The top number in a fraction - how many parts we have',
+        min: 0,
+        max: 8,
+        step: 1,
+        color: '#F7B23B',
     },
 
-    // ─────────────────────────────────────────
-    // ARRAY - List of numbers
-    // ─────────────────────────────────────────
-    dataPoints: {
-        defaultValue: [1, 4, 9, 16, 25],
-        type: 'array',
-        label: 'Data Points',
-        description: 'Y-values for plotting a graph',
+    // Understanding denominator
+    denominatorValue: {
+        defaultValue: 4,
+        type: 'number',
+        label: 'Denominator',
+        description: 'The bottom number in a fraction - total equal parts',
+        min: 1,
+        max: 8,
+        step: 1,
+        color: '#62D0AD',
     },
 
-    // ─────────────────────────────────────────
-    // OBJECT - Complex structured data
-    // ─────────────────────────────────────────
-    graphSettings: {
-        defaultValue: { 
-            xMin: -10, 
-            xMax: 10, 
-            showGrid: true 
-        },
-        type: 'object',
-        label: 'Graph Settings',
-        description: 'Configuration for the graph display',
-        schema: '{ xMin: number, xMax: number, showGrid: boolean }',
+    // ========================================
+    // SECTION 4: READING AND WRITING FRACTIONS
+    // ========================================
+
+    // Practice fraction - total parts
+    practiceTotalParts: {
+        defaultValue: 4,
+        type: 'number',
+        label: 'Practice Total Parts',
+        description: 'Total parts for practice question',
+        min: 2,
+        max: 8,
+        step: 1,
+        color: '#62D0AD',
     },
-    */
+
+    // Practice fraction - shaded parts
+    practiceShadedParts: {
+        defaultValue: 3,
+        type: 'number',
+        label: 'Practice Shaded Parts',
+        description: 'Shaded parts for practice question',
+        min: 1,
+        max: 8,
+        step: 1,
+        color: '#F7B23B',
+    },
+
+    // ========================================
+    // SECTION 5: FRACTIONS IN EVERYDAY LIFE
+    // ========================================
+
+    // Clock fraction (minutes as fraction of hour)
+    clockMinutes: {
+        defaultValue: 30,
+        type: 'number',
+        label: 'Minutes',
+        description: 'Minutes past the hour',
+        min: 0,
+        max: 60,
+        step: 15,
+        color: '#F8A0CD',
+    },
+
+    // ========================================
+    // ASSESSMENT VARIABLES (CLOZE INPUTS)
+    // ========================================
+
+    // Section 1 question - what do we call parts of a whole
+    answerWhatIsFraction: {
+        defaultValue: '',
+        type: 'text',
+        label: 'What is a fraction answer',
+        description: 'Student answer for what we call parts of a whole',
+        placeholder: '???',
+        correctAnswer: 'fraction',
+        color: '#8E90F5',
+        caseSensitive: false,
+    },
+
+    // Section 2 question - identify fraction from visual
+    answerPartsShaded: {
+        defaultValue: '',
+        type: 'text',
+        label: 'Parts Shaded Answer',
+        description: 'Student answer for number of shaded parts',
+        placeholder: '?',
+        correctAnswer: '2',
+        color: '#F7B23B',
+    },
+
+    answerTotalParts: {
+        defaultValue: '',
+        type: 'text',
+        label: 'Total Parts Answer',
+        description: 'Student answer for total number of parts',
+        placeholder: '?',
+        correctAnswer: '4',
+        color: '#62D0AD',
+    },
+
+    // Section 3 question - identify numerator
+    answerNumeratorMeaning: {
+        defaultValue: '',
+        type: 'select',
+        label: 'Numerator Meaning',
+        description: 'What the numerator tells us',
+        placeholder: '???',
+        correctAnswer: 'parts we have',
+        options: ['parts we have', 'total parts', 'the whole'],
+        color: '#F7B23B',
+    },
+
+    // Section 3 question - identify denominator
+    answerDenominatorMeaning: {
+        defaultValue: '',
+        type: 'select',
+        label: 'Denominator Meaning',
+        description: 'What the denominator tells us',
+        placeholder: '???',
+        correctAnswer: 'total equal parts',
+        options: ['parts we have', 'total equal parts', 'half'],
+        color: '#62D0AD',
+    },
+
+    // Section 4 question - write fraction from picture
+    answerWriteFractionTop: {
+        defaultValue: '',
+        type: 'text',
+        label: 'Fraction Numerator',
+        description: 'Write the numerator of the fraction shown',
+        placeholder: '?',
+        correctAnswer: '3',
+        color: '#F7B23B',
+    },
+
+    answerWriteFractionBottom: {
+        defaultValue: '',
+        type: 'text',
+        label: 'Fraction Denominator',
+        description: 'Write the denominator of the fraction shown',
+        placeholder: '?',
+        correctAnswer: '4',
+        color: '#62D0AD',
+    },
+
+    // Section 5 question - real life fraction
+    answerHalfHour: {
+        defaultValue: '',
+        type: 'text',
+        label: 'Half Hour Minutes',
+        description: 'How many minutes in half an hour',
+        placeholder: '??',
+        correctAnswer: '30',
+        color: '#F8A0CD',
+    },
+
+    // Section 5 - pizza real life
+    answerPizzaFraction: {
+        defaultValue: '',
+        type: 'select',
+        label: 'Pizza Fraction Answer',
+        description: 'What fraction of the pizza is left',
+        placeholder: '???',
+        correctAnswer: '3/4',
+        options: ['1/4', '2/4', '3/4', '4/4'],
+        color: '#62D0AD',
+    },
 };
 
 /**
